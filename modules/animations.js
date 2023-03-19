@@ -1,3 +1,5 @@
+gsap.registerPlugin(ScrollTrigger);
+
 // Main scroll trigger
 function createScrollTrigger(triggerElement, timeline, start = 'top 60%') {
   ScrollTrigger.create({
