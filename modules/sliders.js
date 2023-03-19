@@ -23,7 +23,6 @@ function sliderHomeHero() {
 
   function animateSlide(slide) {
     const slideId = slide.dataset.slideId;
-    console.log(slideId);
     
     if (!slide.animation) {
       slide.animation = {};
