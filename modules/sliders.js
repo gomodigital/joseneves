@@ -4,6 +4,7 @@ function sliderHomeHero() {
     // rewind: true,
     // pagination: false,
     autoplay: true,
+    speed: 0,
     interval: 6000,
   }).mount();
 
