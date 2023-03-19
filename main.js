@@ -23,7 +23,7 @@ const libraryLinkContainer = $('.featured-articles_container');
 const newsletterCTA = $('.newsletter-cta.is-home');
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('it works');
+  alert('it works');
   // Set the current year in the footer
   $('.copyright-year').text(currentYear);
   // Open external links in a new tab
