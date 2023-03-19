@@ -10,7 +10,7 @@ function sliderHomeHero() {
 
   // Animate the initial visible slide
   setTimeout(() => {
-    animateSlide(homeHeroSlider.Components.Elements.slides[splide.index]);
+    animateSlide(homeHeroSlider.Components.Elements.slides[homeHeroSlider.index]);
   }, 50);
 
   homeHeroSlider.on('active', (slide) => {
