@@ -1,27 +1,27 @@
 function sliderHomeHero() {
-  const swiper = new Swiper('.hero-slider .swiper', { // eslint-disable-line
-    loop: true,
-    effect: 'fade',
-    fadeEffect: {
-      crossFade: true,
-    },
-    autoplay: {
-      delay: 6000,
-      disableOnInteraction: true,
-    },
-    navigation: {
-      nextEl: '.hero-slider_nav .swiper-button-next',
-      prevEl: '.hero-slider_nav .swiper-button-prev',
-    },
-    on: {
-      slideChangeTransitionEnd: function () {
-        this.slides[this.previousIndex].animation.progress(0).pause(); // Reset the animation on the previous slide
-        this.slides[this.activeIndex].animation.restart(); // Restart the animation on the active slide
-      },
-    },
+  const homeHeroSlider = new Splide('.hero-slider', {
+    type: 'loop',
+    perPage: 1,
+    perMove: 1,
+    pagination: false,
+    autoplay: true,
+    interval: 5000,
+  }).mount();
+
+  // Animate the initial visible slide
+  setTimeout(() => {
+    animateSlide(splide.Components.Elements.slides[splide.index]);
+  }, 50);
+
+  splide.on('active', (slide) => {
+    animateSlide(slide.slide);
   });
 
-  function setupAnimation(slide) {
+  splide.on('inactive', (slide) => {
+    resetAnimation(slide.slide);
+  });
+
+  function animateSlide(slide) {
     let slideContainer = slide.querySelector('.hero-slider_container');
     let heading = slide.querySelector('.heading_xlarge');
     let headingSplit = new SplitType(heading, { // eslint-disable-line
@@ -33,7 +33,7 @@ function sliderHomeHero() {
     let cta = slide.querySelector('.button');
     let imageContainer = slide.querySelector('.hero-slider_image-container');
     let image = slide.querySelector('.hero-slider_image');
-    let tl = gsap.timeline({ paused: true });
+    let tl = gsap.timeline();
     tl.from(slideContainer, { autoAlpha: 0 });
     tl.from(char, { opacity: 0, yPercent: 100, duration: 0.5, ease: 'back.out(2)', stagger: { amount: 0.25 } });
     tl.from(intro, { opacity: 0, y: 20, duration: 0.5, ease: 'back.out(2)' }, '-=0.5');
@@ -43,53 +43,12 @@ function sliderHomeHero() {
     slide.animation = tl;
   }
 
-  swiper.on('init', function () {
-    this.slides.forEach((slide, index) => { // eslint-disable-line
-      setupAnimation(slide);
-    });
-  });
-
-  // Manually trigger the init event if the swiper instance is already initialized
-  if (swiper.initialized) {
-    swiper.emit('init');
+  function resetAnimation(slide) {
+    if (slide.animation) {
+      slide.animation.progress(0).pause(); // Restart the stored animation
+    }
   }
-
-  // Animate the initial slide after a short delay
-  setTimeout(() => {
-    swiper.slides[swiper.activeIndex].animation.play();
-  }, 1000);
 }
-
-// export function sliderHomePrograms() {
-//   const swiper = new Swiper('.programs-slider .swiper', { // eslint-disable-line
-//     slidesPerView: 'auto',
-//     spaceBetween: 8, // Adjust this value to match the desired gap (8px = 0.5rem)
-//     // loop: true,
-//     // loopedSlides: 8,
-//     // watchOverflow: true,
-//     // autoplay: {
-//     //   delay: 5000,
-//     // },
-//     navigation: {
-//       nextEl: '.programs-slider_nav .swiper-button-next',
-//       prevEl: '.programs-slider_nav .swiper-button-prev',
-//     },
-//     // breakpoints: {
-//     //   568: {
-//     //     slidesPerView: 2,
-//     //   },
-//     // },
-//   });
-//   swiper.on('slideChange', function () {
-//     const lastIndex = swiper.slides.length - 1;
-
-//     if (swiper.activeIndex === lastIndex) {
-//       swiper.slideTo(0, 0, false);
-//     } else if (swiper.activeIndex === 0 && swiper.previousIndex === lastIndex) {
-//       swiper.slideTo(lastIndex, 0, false);
-//     }
-//   });
-// }
 
 function sliderHomePrograms() {
   const programSlider = new Splide('.programs-slider', {
