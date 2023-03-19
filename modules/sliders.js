@@ -1,8 +1,7 @@
 function sliderHomeHero() {
   const homeHeroSlider = new Splide('.hero-slider', {
-    type: 'loop',
-    perPage: 1,
-    perMove: 1,
+    type: 'fade',
+    rewind: true,
     pagination: false,
     autoplay: true,
     interval: 5000,
