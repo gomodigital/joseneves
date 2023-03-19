@@ -23,7 +23,17 @@ const libraryLinkContainer = $('.featured-articles_container');
 const newsletterCTA = $('.newsletter-cta.is-home');
 
 document.addEventListener('DOMContentLoaded', function () {
-  alert('it works');
+  // TOREMOVE
+  $('a').each(function() {
+    var old_url = $(this).attr('href');
+    var current_domain = document.location.hostname;
+    // Replace all occurrences of "https://joseneves.org/" and "https://www.joseneves.org/" with the current hostname
+    if (old_url.includes("https://joseneves.org/") || old_url.includes("https://www.joseneves.org/")) {
+      var new_url = old_url.replace(/https:\/\/(www\.)?joseneves.org\//, "https://" + current_domain + "/");
+      $(this).attr('href', new_url);
+    }
+  });
+
   // Set the current year in the footer
   $('.copyright-year').text(currentYear);
   // Open external links in a new tab
