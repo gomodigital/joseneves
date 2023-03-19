@@ -1,0 +1,101 @@
+.no-scroll {
+    overflow: hidden;
+  }
+  
+  .modal.is-open {
+    display: block;
+  }
+  
+  .modal-video_player {
+    width: 100%;
+  }
+  
+  .scroll-snap-x {
+    scroll-snap-type: x mandatory;
+    scroll-snap-stop: always;
+  }
+  
+  .library-themes_link,
+  .bf-indicators_collection-item,
+  .bf-rankings_collection-item,
+  .bf-tools_collection-item {
+    scroll-snap-align: start;
+  }
+  
+  /* .button-close {
+    clip-path: circle(0%);
+    transition: clip-path 0.5s ease;
+  } */
+  
+  .button-close:hover {
+    transform: scale(1.2);
+    border-color: transparent;
+  }
+  
+  .button-close:hover .button-close_bg {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .button-close:hover .button-close_svg {
+    color: #001b7a;
+  }
+  
+  .hero-slider_image-container {
+    clip-path: circle(100%);
+  }
+  
+  html.w-editor .heading_xlarge,
+  html.w-editor .heading_large {
+    opacity: 1;
+  }
+  
+  .word {
+    overflow: hidden;
+    margin-bottom: -0.1em;
+    transform-origin: bottom;
+  }
+  
+  .highlight-item_image,
+  .product-hero_image {
+    clip-path: circle(100%);
+  }
+  
+  .highlight_image {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+  
+  .button:hover .button_fill {
+    transform: translateY(0);
+  }
+  
+  .button_text {
+    clip-path: polygon(100% 100%, 0 100%, 0 0, 100% 0);
+    overflow: hidden;
+    /* transition: clip-path 0.5s ease; */
+  }
+  
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  @media (max-width: 1288px) {
+    .section_home-hero {
+      max-height: none;
+    }
+  }
+  
+  // between 991px and 1288px, .hero-slider_image-wrapper is 40% of the width of the screen
+  @media (min-width: 991px) and (max-width: 1295px) {
+    .hero-slider_image-wrapper {
+      width: 40%;
+      margin-right: 5%;
+    }
+  }
+  
+  .hero-slider_container,
+  .section_hero,
+  .section_product-hero {
+    visibility: hidden;
+  }
