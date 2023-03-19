@@ -1,10 +1,10 @@
 function sliderHomeHero() {
   const homeHeroSlider = new Splide('.hero-slider', {
-    type: 'fade',
-    rewind: true,
+    type: 'loop',
+    // rewind: true,
     pagination: false,
     autoplay: true,
-    interval: 5000,
+    interval: 6000,
   }).mount();
 
   // Animate the initial visible slide
