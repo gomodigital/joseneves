@@ -34,6 +34,7 @@ function sliderHomeHero() {
     let imageContainer = slide.querySelector('.hero-slider_image-container');
     let image = slide.querySelector('.hero-slider_image');
     let tl = gsap.timeline();
+  
     if (!slide.animation) {
       tl.from(slideContainer, { autoAlpha: 0 });
       tl.from(char, { opacity: 0, yPercent: 100, duration: 0.5, ease: 'back.out(2)', stagger: { amount: 0.25 } });
@@ -41,12 +42,13 @@ function sliderHomeHero() {
       tl.from(cta, { opacity: 0, y: 20, duration: 0.5, ease: 'back.out(2)' }, '-=0.5');
       tl.from(imageContainer, { clipPath: 'circle(0%)', duration: 1.5, ease: 'back.out(2)' }, '-=1.5');
       tl.from(image, { scale: 2, duration: 1.5, ease: 'power4.out' }, '-=1.5');
+      slide.animation = slide.animation || {};
+      slide.animation[slideId] = tl;
     } else {
+      // Restart the stored animation for the slide with the same slideId
       slide.animation[slideId].progress(0).play();
     }
-    slide.animation = slide.animation || {};
-    slide.animation[slideId] = tl;
-  }
+  }  
 
   function resetAnimation(slide) {
     const slideId = slide.dataset.slideId;
