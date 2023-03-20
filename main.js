@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Check if old_url is not undefined
     if (old_url) {
       // Replace all occurrences of "https://joseneves.org/" and "https://www.joseneves.org/" with the current hostname
-      if (old_url.includes("https://joseneves.org/") || old_url.includes("https://www.joseneves.org/")) {
-        var new_url = old_url.replace(/https:\/\/(www\.)?joseneves.org\//, "https://" + current_domain + "/");
+      if (old_url.includes('https://joseneves.org/') || old_url.includes('https://www.joseneves.org/')) {
+        var new_url = old_url.replace(/https:\/\/(www\.)?joseneves.org\//, 'https://' + current_domain + '/');
         $(this).attr('href', new_url);
       }
     }
