@@ -12,16 +12,13 @@ function library() {
 
   // Check if there are any query parameters on page load
   const searchParams = new URLSearchParams(window.location.search);
-  // if exists searchparams or exists searchinput
-  if (searchParams || searchInput) {
-    if (searchInput.val().length > 0 || searchParams.toString().length > 0) {
-      hideFeaturedArticles();
-      searchReset.show();
-      searchSubmit.hide();
-    } else {
-      showFeaturedArticles();
-      searchSubmit.show();
-    }
+  if (searchInput && searchInput.val().length > 0 || searchParams && searchParams.toString().length > 0) {
+    hideFeaturedArticles();
+    searchReset.show();
+    searchSubmit.hide();
+  } else {
+    showFeaturedArticles();
+    searchSubmit.show();
   }
 
   if (filterTrigger.hasClass('jetboost-filter-active')) {
