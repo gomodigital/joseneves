@@ -6,6 +6,8 @@ function library() {
   const filterTrigger = $('.jetboost-filter-trigger');
   const typesClear = $('.library-types_clear');
 
+  let previousActiveFilters = new Set();
+
   // Set input type to "search" on page load
   searchInput.attr('type', 'search');
   searchReset.hide();
@@ -64,8 +66,6 @@ function library() {
       featuredArticles.hide();
     }
   }
-
-  let previousActiveFilters = new Set();
 
   function checkFilterClassChanges() {
     let currentActiveFilters = new Set();
