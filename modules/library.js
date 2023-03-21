@@ -2,7 +2,6 @@ function library() {
   const searchInput = $('#library-search_input');
   const searchReset = $('#library-search_reset');
   const searchSubmit = $('#library-search_submit');
-  const featuredArticles = $('.library-articles.is-featured');
   const filterTrigger = $('.jetboost-filter-trigger');
   const typesClear = $('.library-types_clear');
 
@@ -39,29 +38,31 @@ function library() {
     searchReset.hide();
     searchSubmit.show();
   });
+}
 
-  // Show featured articles
-  function showFeaturedArticles() {
-    if (featuredArticles.length > 0) {
-      featuredArticles.show();
-    }
+// Show featured articles
+function showFeaturedArticles() {
+  const featuredArticles = $('.library-articles.is-featured');
+  if (featuredArticles.length > 0) {
+    featuredArticles.show();
   }
+}
 
-  // Hide featured articles
-  function hideFeaturedArticles() {
-    if (featuredArticles.length > 0) {
-      featuredArticles.hide();
-    }
+// Hide featured articles
+function hideFeaturedArticles() {
+  const featuredArticles = $('.library-articles.is-featured');
+  if (featuredArticles.length > 0) {
+    featuredArticles.hide();
   }
+}
 
-  // Update featured articles visibility based on the query string
-  function updateFeaturedArticlesVisibility() {
-    const searchParams = new URLSearchParams(window.location.search);
-    if (searchParams.toString().length > 0) {
-      hideFeaturedArticles();
-    } else {
-      showFeaturedArticles();
-    }
+// Update featured articles visibility based on the query string
+function updateFeaturedArticlesVisibility() {
+  const searchParams = new URLSearchParams(window.location.search);
+  if (searchParams.toString().length > 0) {
+    hideFeaturedArticles();
+  } else {
+    showFeaturedArticles();
   }
 }
 
@@ -70,6 +71,3 @@ window.JetboostListUpdated = function (collectionList) {
 
   // ... the rest of the original JetboostListUpdated function ...
 };
-
-// // Run the library function on page load
-// $(document).ready(library);
