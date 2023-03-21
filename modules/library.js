@@ -21,52 +21,8 @@ function library() {
     searchSubmit.show();
   }
 
-  // if (filterTrigger.hasClass('jetboost-filter-active')) {
-  //   hideFeaturedArticles();
-  // } else {
-  //   showFeaturedArticles();
-  // }
-
-  // Initialize the MutationObserver
-  const observer = new MutationObserver(handleMutations);
-
-  // Set options for the observer
-  const observerOptions = {
-    attributes: true,
-    attributeFilter: ['class'],
-    subtree: true
-  };
-
-  // Observe filterTrigger and its subtree
-  filterTrigger.each(function () {
-    observer.observe(this, observerOptions);
-  });
-
-  // Handle mutations
-  function handleMutations(mutationsList) {
-    let activeFilters = 0;
-
-    filterTrigger.each(function () {
-      if ($(this).hasClass('jetboost-filter-active')) {
-        activeFilters++;
-      }
-    });
-
-    if (activeFilters > 0) {
-      hideFeaturedArticles();
-    } else {
-      showFeaturedArticles();
-    }
-  }
-
-  // Show featured articles when filter is clicked
-  filterTrigger.on('click', function () {
-    if ($(this).hasClass('jetboost-filter-active')) {
-      hideFeaturedArticles();
-    } else {
-      showFeaturedArticles();
-    }
-  });
+  // Initialize the check for changes in 'jetboost-filter-active' class
+  checkFilterClassChanges();
 
   // Show featured articles when clear button is clicked
   typesClear.on('click', function () {
@@ -106,6 +62,52 @@ function library() {
   function hideFeaturedArticles() {
     if (featuredArticles.length > 0) {
       featuredArticles.hide();
+    }
+  }
+
+  let previousActiveFilters = new Set();
+
+  function checkFilterClassChanges() {
+    let currentActiveFilters = new Set();
+
+    filterTrigger.each(function () {
+      if ($(this).hasClass('jetboost-filter-active')) {
+        currentActiveFilters.add(this);
+      }
+    });
+
+    if (!areSetsEqual(previousActiveFilters, currentActiveFilters)) {
+      updateFeaturedArticlesVisibility();
+      previousActiveFilters = currentActiveFilters;
+    }
+
+    // Check for filter class changes every 100 milliseconds
+    setTimeout(checkFilterClassChanges, 100);
+  }
+
+  // Check if two sets are equal
+  function areSetsEqual(a, b) {
+    if (a.size !== b.size) return false;
+    for (let item of a) {
+      if (!b.has(item)) return false;
+    }
+    return true;
+  }
+
+  // Function to update the visibility of featured articles based on active filters
+  function updateFeaturedArticlesVisibility() {
+    let activeFilters = 0;
+
+    filterTrigger.each(function () {
+      if ($(this).hasClass('jetboost-filter-active')) {
+        activeFilters++;
+      }
+    });
+
+    if (activeFilters > 0) {
+      hideFeaturedArticles();
+    } else {
+      showFeaturedArticles();
     }
   }
 }
