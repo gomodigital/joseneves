@@ -6,25 +6,12 @@ function library() {
   const filterTrigger = $('.jetboost-filter-trigger');
   const typesClear = $('.library-types_clear');
 
-  let previousActiveFilters = new Set();
-
   // Set input type to "search" on page load
   searchInput.attr('type', 'search');
   searchReset.hide();
 
   // Check if there are any query parameters on page load
-  const searchParams = new URLSearchParams(window.location.search);
-  if (searchInput.val().length > 0 || searchParams.toString().length > 0) {
-    hideFeaturedArticles();
-    searchReset.show();
-    searchSubmit.hide();
-  } else {
-    showFeaturedArticles();
-    searchSubmit.show();
-  }
-
-  // Initialize the check for changes in 'jetboost-filter-active' class
-  checkFilterClassChanges();
+  updateFeaturedArticlesVisibility();
 
   // Show featured articles when clear button is clicked
   typesClear.on('click', function () {
@@ -67,47 +54,16 @@ function library() {
     }
   }
 
-  function checkFilterClassChanges() {
-    let currentActiveFilters = new Set();
-
-    filterTrigger.each(function () {
-      if ($(this).hasClass('jetboost-filter-active')) {
-        currentActiveFilters.add(this);
-      }
-    });
-
-    if (!areSetsEqual(previousActiveFilters, currentActiveFilters)) {
-      updateFeaturedArticlesVisibility();
-      previousActiveFilters = currentActiveFilters;
-    }
-
-    // Check for filter class changes every 100 milliseconds
-    setTimeout(checkFilterClassChanges, 100);
-  }
-
-  // Check if two sets are equal
-  function areSetsEqual(a, b) {
-    if (a.size !== b.size) return false;
-    for (let item of a) {
-      if (!b.has(item)) return false;
-    }
-    return true;
-  }
-
-  // Function to update the visibility of featured articles based on active filters
+  // Update featured articles visibility based on the query string
   function updateFeaturedArticlesVisibility() {
-    let activeFilters = 0;
-
-    filterTrigger.each(function () {
-      if ($(this).hasClass('jetboost-filter-active')) {
-        activeFilters++;
-      }
-    });
-
-    if (activeFilters > 0) {
+    const searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.toString().length > 0) {
       hideFeaturedArticles();
     } else {
       showFeaturedArticles();
     }
   }
+
+  // Listen for changes in the query string
+  window.addEventListener('popstate', updateFeaturedArticlesVisibility);
 }
