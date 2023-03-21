@@ -63,7 +63,13 @@ function library() {
       showFeaturedArticles();
     }
   }
-
-  // Listen for changes in the query string
-  window.addEventListener('popstate', updateFeaturedArticlesVisibility);
 }
+
+window.JetboostListUpdated = function (collectionList) {
+  updateFeaturedArticlesVisibility();
+
+  // ... the rest of the original JetboostListUpdated function ...
+};
+
+// // Run the library function on page load
+// $(document).ready(library);
