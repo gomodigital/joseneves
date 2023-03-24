@@ -21,6 +21,8 @@ const languageButton = $('.button-language');
 const libraryLink = $('.arrow-button.is-library-link');
 const libraryLinkContainer = $('.featured-articles_container');
 const newsletterCTA = $('.newsletter-cta.is-home');
+const searchCloseButton = $('.button-close-search');
+const globalSearchInput = $('.global-search_input');
 
 document.addEventListener('DOMContentLoaded', function () {
   // TOREMOVE
@@ -70,6 +72,19 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(function () {
       window.location.href = url;
     }, 500);
+  });
+
+  globalSearchInput.on('input', function () {
+    if ($(this).val() === '') {
+      $('body').removeClass('no-scroll');
+    } else {
+      $('body').addClass('no-scroll');
+    }
+  });
+
+  searchCloseButton.on('click', function (e) {
+    e.preventDefault();
+    $('body').removeClass('no-scroll');
   });
 
   if (accordionElements.length > 0) {

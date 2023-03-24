@@ -68,6 +68,4 @@ function updateFeaturedArticlesVisibility() {
 
 window.JetboostListUpdated = function (collectionList) {
   updateFeaturedArticlesVisibility();
-
-  // ... the rest of the original JetboostListUpdated function ...
 };
