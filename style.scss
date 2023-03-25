@@ -109,6 +109,10 @@ svg {
   visibility: hidden;
 }
 
-.global-search_form {
+.global-search_form-wrapper {
   pointer-events: none;
+}
+
+.global-search_form-wrapper .button-search {
+  pointer-events: auto;
 }

@@ -85,13 +85,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   searchOpenButton.on('click', function (e) {
     e.preventDefault();
-    $('.global-search_form').css('pointer-events', 'auto');
+    $('.global-search_form-wrapper').css('pointer-events', 'auto');
   });
 
   searchCloseButton.on('click', function (e) {
     e.preventDefault();
     $('body').removeClass('no-scroll');
-    $('.global-search_form').css('pointer-events', 'none');
+    $('.global-search_form-wrapper').css('pointer-events', 'none');
   });
 
   if (accordionElements.length > 0) {
