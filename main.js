@@ -21,6 +21,7 @@ const languageButton = $('.button-language');
 const libraryLink = $('.arrow-button.is-library-link');
 const libraryLinkContainer = $('.featured-articles_container');
 const newsletterCTA = $('.newsletter-cta.is-home');
+const searchOpenButton = $('.button-search');
 const searchCloseButton = $('.button-close-search');
 const globalSearchInput = $('.global-search_input');
 
@@ -82,9 +83,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  searchOpenButton.on('click', function (e) {
+    e.preventDefault();
+    $('.global-search_form').css('pointer-events', 'auto');
+  });
+
   searchCloseButton.on('click', function (e) {
     e.preventDefault();
     $('body').removeClass('no-scroll');
+    $('.global-search_form').css('pointer-events', 'none');
   });
 
   if (accordionElements.length > 0) {

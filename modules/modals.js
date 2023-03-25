@@ -29,60 +29,11 @@ function videoModals() {
   });
 }
 
-// export function modals() {
-//   // Normal modals
-//   const modal = $('.modal');
-//   modal.detach().appendTo('body');
-
-//   $(document).on('click', 'a[href^="#modal-"]', function (e) {
-//     e.preventDefault();
-//     const target = $(this).attr('href');
-//     $(target).addClass('is-open');
-//     $('body').addClass('no-scroll');
-//     // history.replaceState({}, document.title, window.location.href.split('#')[0]);
-//   });
-
-//   $('.modal_close').on('click', function (e) {
-//     e.preventDefault();
-//     const modal = $(this).closest('.modal');
-//     modal.removeClass('is-open');
-//     $('body').removeClass('no-scroll');
-//   });
-
-//   function showElementByHash(hash) {
-//     if (window.location.hash === hash) {
-//       const element = $(hash);
-//       if (element.length) {
-//         element.addClass('is-open');
-//         $('body').addClass('no-scroll');
-//       }
-//     }
-//   }
-
-//   $(document).ready(() => {
-//     showElementByHash('#download');
-
-//     $(window).on('hashchange', () => {
-//       showElementByHash('#download');
-//     });
-//   });
-// }
-
 function modals() {
   // Normal modals
   const modal = $('.modal');
   modal.detach().appendTo('body');
 
-  // $(document).on('click', 'a[href^="#"]', function (e) {
-  //   const target = $(this).attr('href');
-  //   const targetModal = $(target);
-
-  //   if (targetModal.hasClass('modal')) {
-  //     e.preventDefault();
-  //     targetModal.addClass('is-open');
-  //     $('body').addClass('no-scroll');
-  //   }
-  // });
   $(document).on('click', 'a[href^="#"]', function (e) {
     const target = $(this).attr('href');
 
