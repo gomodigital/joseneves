@@ -40,6 +40,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // if url contains /en/, set the html lang attrinute to en
+  if (window.location.href.includes('/en/')) {
+    $('html').attr('lang', 'en');
+  }
+
   // Set the current year in the footer
   $('.copyright-year').text(currentYear);
   // Open external links in a new tab
