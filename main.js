@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (url.includes('/en/')) {
       innerCircle.css('transform', 'translateX(100%)');
     } else {
-      innerCircle.css('transform', 'translateX(0)');
+      innerCircle.css('transform', 'translateX(0%)');
     }
     setTimeout(function () {
       window.location.href = url;
