@@ -69,7 +69,12 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
     let url = $(this).attr('href');
     let innerCircle = $(this).find('.button-language_switch-circle');
-    innerCircle.css('transform', 'translateX(100%)');
+    // if url contains /en/ apply the css
+    if (url.includes('/en/')) {
+      innerCircle.css('transform', 'translateX(100%)');
+    } else {
+      innerCircle.css('transform', 'translateX(0)');
+    }
     setTimeout(function () {
       window.location.href = url;
     }, 500);
