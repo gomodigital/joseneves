@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
     sliderHomeHero();
     document.addEventListener('mousemove', move);
     function move(e) {
-      heroSlider.querySelectorAll('[move="true"]').forEach(layer => {
+      this.querySelectorAll('[move="true"]').forEach(layer => {
         const speed = 0.2;
         const x = (window.innerWidth - e.pageX * speed) / 100;
         const y = (window.innerHeight - e.pageY * speed) / 100;
