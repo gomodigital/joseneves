@@ -4,6 +4,16 @@ function videoModals() {
   const closeButton = modalVideo.find('.button-close');
   modalVideo.detach().appendTo('body');
 
+  let players = [];
+
+  function onYouTubeIframeAPIReady() {
+    const iframes = document.querySelectorAll('.youtube-player');
+    for (let i = 0; i < iframes.length; i++) {
+      const player = new YT.Player(iframes[i]);
+      players.push(player);
+    }
+  }
+
   $(document).on('click', 'a[href^="#modal-video-"]', function (e) {
     e.preventDefault();
     const target = $(this).attr('href');
@@ -11,8 +21,8 @@ function videoModals() {
     $('body').addClass('no-scroll');
     offsetMenuButton();
     history.replaceState({}, document.title, window.location.href.split('#')[0]);
-    const video = $(target).find('.modal-video_player');
-    video[0].play();
+    // const video = $(target).find('.modal-video_player');
+    // video[0].play();
   });
 
   closeButton.on('click', function (e) {
@@ -21,11 +31,15 @@ function videoModals() {
     const modalVideo = $(this).closest('.modal-video');
     modalVideo.removeClass('is-open');
     $('body').removeClass('no-scroll');
-    const video = $(this).closest('.modal-video').find('.modal-video_player');
-    // Pause the video
-    video[0].pause();
-    // Reset the video to the beginning
-    video[0].currentTime = 0;
+    for (let i = 0; i < players.length; i++) {
+      players[i].pauseVideo();
+      players[i].seekTo(0);
+    }
+    // const video = $(this).closest('.modal-video').find('.modal-video_player');
+    // // Pause the video
+    // video[0].pause();
+    // // Reset the video to the beginning
+    // video[0].currentTime = 0;
   });
 }
 
