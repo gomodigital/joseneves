@@ -1,18 +1,18 @@
+let players = [];
+
+function onYouTubeIframeAPIReady() {
+  const iframes = document.querySelectorAll('.youtube-player');
+  for (let i = 0; i < iframes.length; i++) {
+    const player = new YT.Player(iframes[i]);
+    players.push(player);
+  }
+}
+
 function videoModals() {
   // Video modals
   const modalVideo = $('.modal-video');
   const closeButton = modalVideo.find('.button-close');
   modalVideo.detach().appendTo('body');
-
-  let players = [];
-
-  function onYouTubeIframeAPIReady() {
-    const iframes = document.querySelectorAll('.youtube-player');
-    for (let i = 0; i < iframes.length; i++) {
-      const player = new YT.Player(iframes[i]);
-      players.push(player);
-    }
-  }
 
   $(document).on('click', 'a[href^="#modal-video-"]', function (e) {
     e.preventDefault();
