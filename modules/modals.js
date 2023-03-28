@@ -27,14 +27,15 @@ function videoModals() {
 
   closeButton.on('click', function (e) {
     e.preventDefault();
+    for (let i = 0; i < players.length; i++) {
+      players[i].playVideo(); // Add this line to ensure the video is in a "playing" or "buffering" state.
+      players[i].seekTo(0);
+      players[i].pauseVideo();
+    }
     resetMenuButton();
     const modalVideo = $(this).closest('.modal-video');
     modalVideo.removeClass('is-open');
     $('body').removeClass('no-scroll');
-    for (let i = 0; i < players.length; i++) {
-      players[i].pauseVideo();
-      players[i].seekTo(0);
-    }
     // const video = $(this).closest('.modal-video').find('.modal-video_player');
     // // Pause the video
     // video[0].pause();
