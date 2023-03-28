@@ -20,7 +20,9 @@ function videoModals() {
     $(target).addClass('is-open');
     $('body').addClass('no-scroll');
     offsetMenuButton();
-    history.replaceState({}, document.title, window.location.href.split('#')[0]);
+    setTimeout(function() {
+      history.replaceState({}, document.title, window.location.href.split('#')[0]);
+    }, 0);
     // const video = $(target).find('.modal-video_player');
     // video[0].play();
   });
@@ -28,7 +30,6 @@ function videoModals() {
   closeButton.on('click', function (e) {
     e.preventDefault();
     for (let i = 0; i < players.length; i++) {
-      players[i].playVideo(); // Add this line to ensure the video is in a "playing" or "buffering" state.
       players[i].seekTo(0);
       players[i].pauseVideo();
     }
