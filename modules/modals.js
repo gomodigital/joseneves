@@ -30,6 +30,7 @@ function videoModals() {
   closeButton.on('click', function (e) {
     e.preventDefault();
     for (let i = 0; i < players.length; i++) {
+      players[i].playVideo(); // Add this line to ensure the video is in a "playing" or "buffering" state.
       players[i].seekTo(0);
       players[i].pauseVideo();
     }
