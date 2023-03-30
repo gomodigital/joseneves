@@ -1,11 +1,11 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // Main scroll trigger
-function createScrollTrigger(triggerElement, timeline, start = 'top 40%') {
+function createScrollTrigger(triggerElement, timeline, start = 'top 80%') {
   ScrollTrigger.create({
     trigger: triggerElement,
     start: start,
-    markers: false,
+    markers: true,
     onEnter: () => timeline.play(),
     onLeaveBack: () => timeline.reverse(),
   });
