@@ -80,20 +80,20 @@ svg {
   height: 100%;
 }
 
-@media (max-width: 1288px) {
-  .section_home-hero {
-    max-height: none;
-  }
-}
+// @media (max-width: 1288px) {
+//   .section_home-hero {
+//     max-height: none;
+//   }
+// }
 
-// if viewport height is less that 720px
-@media (max-height: 720px) {
-  .section_home-hero,
-  .section_product-hero {
-    height: auto;
-    max-height: none;
-  }
-}
+// // if viewport height is less that 720px
+// @media (max-height: 720px) {
+//   .section_home-hero,
+//   .section_product-hero {
+//     height: auto;
+//     max-height: none;
+//   }
+// }
 
 // between 991px and 1288px, .hero-slider_image-wrapper is 40% of the width of the screen
 // @media (min-width: 991px) and (max-width: 1295px) {
