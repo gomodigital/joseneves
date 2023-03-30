@@ -5,7 +5,7 @@ function createScrollTrigger(triggerElement, timeline, start = 'top 80%') {
   ScrollTrigger.create({
     trigger: triggerElement,
     start: start,
-    markers: true,
+    markers: false,
     onEnter: () => timeline.play(),
     onLeaveBack: () => timeline.reverse(),
   });
