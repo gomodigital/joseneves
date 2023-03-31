@@ -80,12 +80,6 @@ svg {
   height: 100%;
 }
 
-// @media (max-width: 1288px) {
-//   .section_home-hero {
-//     max-height: none;
-//   }
-// }
-
 // if viewport height is less that 720px
 @media (max-height: 720px) {
   .section_home-hero,
@@ -93,24 +87,7 @@ svg {
     height: auto;
     max-height: none;
   }
-  // .hero-slider_container {
-  //   padding-bottom: 12rem;
-  // }
 }
-
-// @media screen and (max-width: 768px) {
-// 	.section_home-hero {
-//   	height: calc(100vh - 4rem);
-//   }
-// }
-
-// between 991px and 1288px, .hero-slider_image-wrapper is 40% of the width of the screen
-// @media (min-width: 991px) and (max-width: 1295px) {
-//   .hero-slider_image-wrapper {
-//     width: 40%;
-//     margin-right: 5%;
-//   }
-// }
 
 .hero-slider_container,
 .section_hero,
@@ -124,4 +101,8 @@ svg {
 
 .global-search_form-wrapper .button-search {
   pointer-events: auto;
+}
+
+.library .global-search_form-wrapper {
+  display: none;
 }
