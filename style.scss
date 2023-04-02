@@ -83,7 +83,8 @@ svg {
 // if viewport height is less that 720px
 @media (max-height: 720px) {
   .section_home-hero,
-  .section_hero {
+  .section_hero,
+  .section_product-hero {
     height: auto;
     max-height: none;
   }
