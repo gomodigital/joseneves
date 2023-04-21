@@ -5,6 +5,7 @@
 // @codekit-prepend './modules/modals.js'
 // @codekit-prepend './modules/sliders.js'
 
+import { Cookies } from 'js-cookie'
 const currentYear = new Date().getFullYear();
 const accordionElements = $('.accordion-wrapper');
 const faqsSection = $('.section_faqs');
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Set the current year in the foot
   $('.copyright-year').text(currentYear);
   // Open external links in a new tab
-  //$('a[href^="http"]:not([href*="' + window.location.hostname + '"])').attr('target', '_blank');
+  $('a[href^="http"]:not([href*="' + window.location.hostname + '"])').attr('target', '_blank');
 
   if ($(window).width() < 478) {
     libraryLink.detach().insertAfter(libraryLinkContainer);
