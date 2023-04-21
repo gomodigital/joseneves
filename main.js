@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // If hostname does not contain https://joseneves.org/ or https://www.joseneves.org/ open links in a new tab
   $('a').each(function() {
     var href = $(this).attr('href');
-    if (href && !href.startsWith('https://joseneves.org/') && !href.startsWith('https://www.joseneves.org/') && !$(this).is('[target]')) {
+    if (href && !href.startsWith('https://joseneves.org/') && !href.startsWith('https://www.joseneves.org/') && !href.startsWith('/') && !$(this).is('[target]')) {
       $(this).attr('target', '_blank');
       $(this).attr('rel', 'noopener noreferrer');
     }
