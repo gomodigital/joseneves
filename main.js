@@ -5,7 +5,6 @@
 // @codekit-prepend './modules/modals.js'
 // @codekit-prepend './modules/sliders.js'
 
-import { Cookies } from 'js-cookie'
 const currentYear = new Date().getFullYear();
 const accordionElements = $('.accordion-wrapper');
 const faqsSection = $('.section_faqs');
@@ -27,8 +26,21 @@ const searchCloseButton = $('.button-close-search');
 const globalSearchInput = $('.global-search_input');
 
 document.addEventListener('DOMContentLoaded', function () {
+  // TOREMOVE
+  // $('a').each(function () {
+  //   var old_url = $(this).attr('href');
+  //   var current_domain = document.location.hostname;
+  //   // Check if old_url is not undefined
+  //   if (old_url) {
+  //     // Replace all occurrences of "https://joseneves.org/" and "https://www.joseneves.org/" with the current hostname
+  //     if (old_url.includes('https://joseneves.org/') || old_url.includes('https://www.joseneves.org/')) {
+  //       var new_url = old_url.replace(/https:\/\/(www\.)?joseneves.org\//, 'https://' + current_domain + '/');
+  //       $(this).attr('href', new_url);
+  //     }
+  //   }
+  // });
 
-  // Set the current year in the foot
+  // Set the current year in the footer
   $('.copyright-year').text(currentYear);
   // Open external links in a new tab
   $('a[href^="http"]:not([href*="' + window.location.hostname + '"])').attr('target', '_blank');
